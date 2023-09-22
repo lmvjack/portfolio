@@ -107,7 +107,7 @@ const { data: repos } = await useFetch('https://api.github.com/users/lmvjack/rep
                         <UAvatar src="/images/propic.svg" chip-color="purple" chip-text="👋" chip-position="top-right" size="lg" />
                         <div class="w-full flex flex-col justify-center items-left gap-0.5 ">
                             <h2 class="text-lg font-semibold">yvk15</h2>
-                            <p class="text-sm text-gray-500 dark:text-gray-400">welcome to my playground :D</p>
+                            <p class="text-sm text-gray-500 dark:text-gray-400">Welcome to my playground :D</p>
                         </div>
                     </div>
                     
