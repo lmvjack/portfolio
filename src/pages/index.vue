@@ -98,8 +98,8 @@ const { data: repos } = await useFetch('https://api.github.com/users/lmvjack/rep
 
 
 <template>
-    <div class="w-full flex flex-col justify-center items-center gap-y-5 px-[15%] py-[5%]">
-        <div class="h-64 w-full flex flex-row justify-center items-center gap-5">
+    <main class="w-full flex flex-col justify-center items-center gap-y-5 px-[15%] py-[5%]">
+        <section class="h-64 w-full flex flex-row justify-center items-center gap-5">
             <!-- Profile card -->
             <UCard class="w-3/4 h-full">
                 <template #header > 
@@ -118,7 +118,7 @@ const { data: repos } = await useFetch('https://api.github.com/users/lmvjack/rep
                         <p class="text-sm">
                             Contact me using 
                             <span class="text-sm text-gray-500 dark:text-gray-400 underline">
-                                me@giacomoquarto.com
+                                me [at] giacomoquarto.com
                             </span>
                         </p>
                         <div class="flex flex-row justify-center items-center gap-2">
@@ -142,35 +142,13 @@ const { data: repos } = await useFetch('https://api.github.com/users/lmvjack/rep
                 </UDropdown>
             </UCard>
             <!-- ----- -->
-        </div>
+        </section>
         
+        <!-- Open source projects -->
+        <section class="w-full flex flex-row justify-center items-center gap-5">
+            <UCard>
 
-        <!-- Playlist card -->
-        <UCard class="w-full">
-            <template #header >
-                <div class="flex items-center justify-between">
-                    <div class="flex items-center justify-between gap-2">
-                        <p class="font-semibold">Playlist</p>
-                        <UAvatarGroup size="sm" :max="3">
-                            <UAvatar src="/images/kanye.png" alt="Kanye West" />
-                            <UAvatar src="/images/technique.png" alt="Immortal Technique" />
-                            <UAvatar src="/images/linkin.png" alt="Linkin Park" />
-                            <UAvatar src="" alt="PARTYNEXTDOOR" />
-                        </UAvatarGroup>
-                    </div>
-                    
-                    <div class="flex items-center justify-between gap-1">
-                        <ph-spotify-logo :size="24" weight="fill" />
-                        <p class="text-sm">See on Spotify</p>
-                    </div>
-                </div>
-            </template>
-                <UTable :rows="people" />
-            <template #footer />
-        </UCard>
-        <!-- ----- -->
-
-        <div class="w-full flex flex-row justify-center items-center gap-5">
+            </UCard>
             <UCard v-for="repo in repos" class="w-1/3">
                 <template #header> 
                     {{repo.name}}
@@ -207,9 +185,33 @@ const { data: repos } = await useFetch('https://api.github.com/users/lmvjack/rep
                         </UModal>
                     </div>
                 </template>
-        </UCard>
+            </UCard>
+        </section>
 
-        </div>
+        <!-- Playlist card -->
+        <UCard class="w-full">
+            <template #header >
+                <div class="flex items-center justify-between">
+                    <div class="flex items-center justify-between gap-2">
+                        <p class="font-semibold">Playlist</p>
+                        <UAvatarGroup size="sm" :max="3">
+                            <UAvatar src="/images/kanye.png" alt="Kanye West" />
+                            <UAvatar src="/images/technique.png" alt="Immortal Technique" />
+                            <UAvatar src="/images/linkin.png" alt="Linkin Park" />
+                            <UAvatar src="" alt="PARTYNEXTDOOR" />
+                        </UAvatarGroup>
+                    </div>
+                    
+                    <div class="flex items-center justify-between gap-1">
+                        <ph-spotify-logo :size="24" weight="fill" />
+                        <p class="text-sm">See on Spotify</p>
+                    </div>
+                </div>
+            </template>
+                <UTable :rows="people" />
+            <template #footer />
+        </UCard>
+        <!-- ----- -->
     
 
         <UDropdown :items="items" :popper="{ placement: 'bottom-start' }">
@@ -217,7 +219,7 @@ const { data: repos } = await useFetch('https://api.github.com/users/lmvjack/rep
         </UDropdown>
 
         
-    </div>
+    </main>
 </template>
 
 <style>
