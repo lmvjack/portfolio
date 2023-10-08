@@ -1,6 +1,5 @@
 <script setup>
 import { onMounted } from 'vue';
-import { PhSpotifyLogo, PhGithubLogo, PhLinkedinLogo, PhSmileySticker, PhCat } from "@phosphor-icons/vue";
 import { playlist, playlistLength } from "~/helpers/playlist";
 import { tags } from "~/helpers/tags";
 import { projects } from "~/helpers/projects";
@@ -105,9 +104,9 @@ const { data: repos } = await useFetch('https://api.github.com/users/lmvjack/rep
                         </UDropdown>
                         <div class="flex flex-row justify-center items-center gap-2">
                             <NuxtLink to="https://github.com/lmvjack">
-                                <ph-github-logo :size="18" weight="fill" />
+                                <Icon name="i-ph-github-logo" class="text-[18px]" color="white" />
                             </NuxtLink>
-                            <ph-linkedin-logo :size="18" weight="fill" class="text-gray-500 dark:text-gray-400" />
+                            <Icon name="i-ph-linkedin-logo" class="text-[18px] text-gray-500 dark:text-gray-400" />
                         </div>
                     </div>
 
@@ -203,7 +202,7 @@ const { data: repos } = await useFetch('https://api.github.com/users/lmvjack/rep
                         <div class="flex items-center justify-between gap-1">
                             <!-- <ph-spotify-logo :size="24" weight="fill" />
                             <p class="text-sm">See on Spotify</p> -->
-                            <ph-smiley-sticker :size="24" />
+                            <Icon name="i-ph-linkedin-logo" class="text-[24px] text-white" />
                             <p class="text-sm">{{ playlistLength}} songs I like</p>
                         </div>
                     </div>
