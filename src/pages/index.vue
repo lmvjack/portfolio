@@ -44,7 +44,7 @@ const items = [
 
 // Images
 const images = ref([]);
-for (let n = 1; n < 18; n++) {
+for (let n = 1; n < 19; n++) {
     images.value.push(`/images/grid/${n}.webp`)
 }
 
