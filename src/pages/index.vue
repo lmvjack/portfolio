@@ -42,10 +42,13 @@ const items = [
   }]
 ]
 
+// Images
+const images = ref([]);
+for (let n = 1; n < 18; n++) {
+    images.value.push(`/images/grid/${n}.webp`)
+}
 
-
-
-// !!! Clock in footer
+// !!! Clock
 const time = ref('');
 
 function zero(num) {  //Function to put leading zeros in numbers
@@ -82,7 +85,7 @@ const { data: repos } = await useFetch('https://api.github.com/users/lmvjack/rep
             <UCard class="w-full md:w-3/4 min-h-72 h-auto md:h-full">
                 <template #header > 
                     <div class="w-full flex flex-row justify-center items-center gap-5">
-                        <UAvatar src="/images/propic.svg" chip-color="orange" chip-text="👋" chip-position="top-right" size="lg" />
+                        <UAvatar src="/images/propic.webp" chip-color="orange" chip-text="👋" chip-position="top-right" size="lg" />
                         <div class="w-full flex flex-col justify-center items-left gap-0.5 ">
                             <h2 class="text-lg font-semibold">yvk15</h2>
                             <p class="text-sm text-gray-500 dark:text-gray-400">Welcome to my playground :D</p>
@@ -104,7 +107,7 @@ const { data: repos } = await useFetch('https://api.github.com/users/lmvjack/rep
                         </UDropdown>
                         <div class="flex flex-row justify-center items-center gap-2">
                             <NuxtLink to="https://github.com/lmvjack">
-                                <Icon name="i-ph-github-logo" class="text-[18px]" color="white" />
+                                <Icon name="i-ph-github-logo" class="text-[18px] translate-y-[-2px]" color="white" />
                             </NuxtLink>
                             <Icon name="i-ph-linkedin-logo" class="text-[18px] text-gray-500 dark:text-gray-400" />
                         </div>
@@ -173,7 +176,7 @@ const { data: repos } = await useFetch('https://api.github.com/users/lmvjack/rep
         
         <section class="w-screen overflow-x-scroll md:w-full md:overflow-hidden">
             <div class="w-[800px] md:w-full md:h-full flex flex-wrap md:justify-between gap-x-4 md:gap-x-0 gap-y-4 md:overflow-hidden px-5 md:px-0">
-                <div v-for="n in 10" class="w-1/5 md:w-[calc(15vw-16px)] h-52 rounded-lg bg-red-50"></div>
+                <img v-for="image in images" :src='image' class="w-1/5 md:w-[calc(15vw-16px)] h-52 rounded-lg" />
 
             </div>
 
@@ -191,9 +194,9 @@ const { data: repos } = await useFetch('https://api.github.com/users/lmvjack/rep
                         <div class="flex items-center justify-between gap-2">
                             <p class="font-semibold">Playlist</p>
                             <UAvatarGroup size="sm" :max="3">
-                                <UAvatar src="/images/pink.png" alt="Kanye West" />
-                                <UAvatar src="/images/technique.png" alt="Immortal Technique" />
-                                <UAvatar src="/images/linkin.png" alt="Linkin Park" />
+                                <UAvatar src="/images/music/pink.webp" alt="Kanye West" />
+                                <UAvatar src="/images/music/technique.webp" alt="Immortal Technique" />
+                                <UAvatar src="/images/music/linkin.webp" alt="Linkin Park" />
                                 <UAvatar v-for="n in 17" src="" alt="" />
 
                             </UAvatarGroup>
@@ -202,7 +205,7 @@ const { data: repos } = await useFetch('https://api.github.com/users/lmvjack/rep
                         <div class="flex items-center justify-between gap-1">
                             <!-- <ph-spotify-logo :size="24" weight="fill" />
                             <p class="text-sm">See on Spotify</p> -->
-                            <Icon name="i-ph-linkedin-logo" class="text-[24px] text-white" />
+                            <Icon name="i-ph-smiley-sticker" class="text-[24px] text-white" />
                             <p class="text-sm">{{ playlistLength}} songs I like</p>
                         </div>
                     </div>
