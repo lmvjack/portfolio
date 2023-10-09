@@ -170,13 +170,13 @@ const { data: repos } = await useFetch('https://api.github.com/users/lmvjack/rep
                 <h1 class="text-3xl text-left font-semibold">About me</h1>
             </div>
             <p class="text-white text-base">
-                Some pics I like that I've found on the internet or that I've taken.
+                Some pics that represent me that I've found on the internet or that I've taken.
             </p>
         </section>
         
         <section class="w-screen overflow-x-scroll md:w-full md:overflow-hidden">
             <div class="w-[800px] md:w-full md:h-full flex flex-wrap md:justify-between gap-x-4 md:gap-x-0 gap-y-4 md:overflow-hidden px-5 md:px-0">
-                <img v-for="image in images" :src='image' class="w-1/5 md:w-[calc(15vw-16px)] h-52 rounded-lg" />
+                <img v-for="image in images" :src='image' class="w-1/3 md:w-[calc(15vw-16px)] h-52 object-cover rounded-lg" />
 
             </div>
 
