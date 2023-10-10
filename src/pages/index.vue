@@ -11,7 +11,7 @@ const items = [
   [{
     label: 'Profile',
     avatar: {
-      src: '/images/propic.svg'
+      src: '/images/propic.webp'
     },
     shortcuts: ['H'],
     to: '#profile'
@@ -172,6 +172,12 @@ const { data: repos } = await useFetch('https://api.github.com/users/lmvjack/rep
             <p class="text-white text-base">
                 Some pics that represent me that I've found on the internet or that I've taken.
             </p>
+            <div class="flex flex-row gap-2 md:hidden mt-2">
+                <Icon name="i-ph-mouse-simple" class="text-[24px] text-white rotate-90" />
+                <p>
+                    Scroll to see
+                </p>
+            </div>
         </section>
         
         <section class="w-screen overflow-x-scroll md:w-full md:overflow-hidden">
