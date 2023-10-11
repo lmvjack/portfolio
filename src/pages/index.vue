@@ -73,7 +73,7 @@ onMounted(() => {
     startTime()
 })
 
-const { data: repos } = await useFetch('https://api.github.com/users/lmvjack/repos?per_page=2')
+const { data: repos } = await useFetch('https://api.github.com/users/lmvjack/repos?per_page=3')
 </script>
 
 
