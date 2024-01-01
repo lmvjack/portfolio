@@ -1,22 +1,30 @@
 export const tags = [
     {
         icon: 'i-ph-cat',
-        title: 'aspiring cat dad'
+        title: 'cats'
     },
     {
         icon: 'i-ph-barbell',
-        title: 'i like working out'
+        title: 'working out'
+    },
+    {
+        icon: 'i-ph-guitar',
+        title: 'music'
     },
     {
         icon: 'i-ph-mountains',
-        title: 'mountain lover'
+        title: 'mountains'
+    },
+    {
+        icon: 'i-ph-planet',
+        title: 'astronomy'
     },
     {
         icon: 'i-ph-plant',
-        title: 'trying to grow some plants'
+        title: 'nature'
     },
     {
         icon: 'i-ph-book-open-text',
-        title: 'manga: reading Planetes rn'
+        title: 'studio ghibli movies'
     },
 ]

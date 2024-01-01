@@ -1,6 +1,5 @@
 <script setup>
 import { onMounted } from 'vue';
-import { playlist, playlistLength } from "~/helpers/playlist";
 import { tags } from "~/helpers/tags";
 import { projects } from "~/helpers/projects";
 
@@ -9,44 +8,34 @@ const value = ref(50)
 
 const items = [
   [{
-    label: 'Profile',
+    label: 'profile',
     avatar: {
       src: '/images/propic.webp'
     },
     shortcuts: ['H'],
     to: '#profile'
   }], [{
-    label: 'Personal projects',
+    label: 'personal projects',
     icon: 'i-ph-code',
     shortcuts: ['E'],
     to: '#projects',
   }, {
-    label: 'Works',
+    label: 'work experience',
     icon: 'i-heroicons-document-duplicate-20-solid',
     shortcuts: ['L'],
     disabled: true
   }], [{
-    label: 'About',
+    label: 'more about me',
     icon: 'i-ph-cat',
     shortcuts: ['L'],
-    to: '#about'
-  }, {
-    label: 'Music',
-    icon: 'i-ph-playlist',
-    to: '#music'
+    to: '/me'
   }], [{
-    label: 'Contacts',
+    label: 'contacts',
     icon: 'i-ph-envelope',
     shortcuts: ['O'],
     disabled: true
   }]
 ]
-
-// Images
-const images = ref([]);
-for (let n = 1; n < 19; n++) {
-    images.value.push(`/images/grid/${n}.webp`)
-}
 
 // !!! Clock
 const time = ref('');
@@ -87,13 +76,13 @@ const { data: repos } = await useFetch('https://api.github.com/users/lmvjack/rep
                     <div class="w-full flex flex-row justify-center items-center gap-5">
                         <UAvatar src="/images/propic.webp" chip-color="orange" chip-text="👋" chip-position="top-right" size="lg" />
                         <div class="w-full flex flex-col justify-center items-left gap-0.5 ">
-                            <h2 class="text-lg font-semibold">yvk15</h2>
-                            <p class="text-sm text-gray-500 dark:text-gray-400">Welcome to my playground :D</p>
+                            <h2 class="text-lg font-semibold">Giacomo</h2>
+                            <p class="text-sm text-gray-500 dark:text-gray-400">🚧 website work in progress 🚧</p>
                         </div>
                     </div>
                     
                 </template>
-                I'm a web developer and aspiring software engineer. Currently I'm pursuing a bachelor's in Computer Science at the University of Genoa.
+                Tech enthusiast and programmer. 🔋 <br> Currently pursuing a bachelor's in Computer Science at the University of Genoa. 🔌
                 <template #footer >
                     <div class="flex items-center justify-between">
                         <!-- <p class="text-sm">
@@ -120,13 +109,14 @@ const { data: repos } = await useFetch('https://api.github.com/users/lmvjack/rep
            <!-- Info card -->
             <UCard class="w-full md:w-1/4 h-64 md:h-full">
                 <div class="w-full flex flex-row justify-between">
-                    <p>My local time</p>
+                    <p class="text-sm text-white/80">My local time</p>
                     <!-- <UDropdown :items="items" :popper="{ placement: 'bottom-start' }">
                         <UButton color="white" label="Jump to" trailing-icon="i-heroicons-chevron-down-20-solid" />
                     </UDropdown> -->
                 </div>
                 <p style="font-family: 'Press Start 2P', cursive;">{{ time }}</p>
-                <div class="h-full md:h-36 flex flex-wrap gap-3 md:gap-0 mt-[5%] overflow-scroll">
+                <p class="mt-[5%] text-sm text-white/80">I also enjoy...</p>
+                <div class="h-full flex flex-wrap gap-2 mt-[1%] overflow-scroll">
                     <MeTag v-for="tag in tags" :title="tag.title" :icon="tag.icon" />
                 </div>
             </UCard>
@@ -163,64 +153,8 @@ const { data: repos } = await useFetch('https://api.github.com/users/lmvjack/rep
         <!-- <div class="w-full flex flex-row justify-start mt-6">
             <h1 class="text-3xl text-left font-semibold">Works</h1>
         </div> -->
-
-        <!-- About me -->
-        <section id="about" class="w-full">
-            <div class="w-full flex flex-row justify-start mt-6 mb-4">
-                <h1 class="text-3xl text-left font-semibold">About me</h1>
-            </div>
-            <p class="text-white text-base">
-                Some pics that represent me that I've found on the internet or that I've taken.
-            </p>
-            <div class="flex flex-row gap-2 md:hidden mt-2">
-                <Icon name="i-ph-mouse-simple" class="text-[24px] text-white rotate-90" />
-                <p>
-                    Scroll to see
-                </p>
-            </div>
-        </section>
         
-        <section class="w-screen overflow-x-scroll md:w-full md:overflow-hidden">
-            <div class="w-[1200px] md:w-full md:h-full flex flex-wrap md:justify-between gap-x-4 md:gap-x-0 gap-y-4 md:overflow-hidden px-5 md:px-0">
-                <img v-for="image in images" :src='image' class="w-48 md:w-[calc(15vw-16px)] h-52 object-cover rounded-lg" />
-
-            </div>
-
-        </section>
-
-        
-
-        
-
-        <!-- Playlist card -->
-        <section id="music" class="w-full">
-            <UCard class="w-full">
-                <template #header >
-                    <div class="flex items-center justify-between">
-                        <div class="flex items-center justify-between gap-2">
-                            <p class="font-semibold">Playlist</p>
-                            <UAvatarGroup size="sm" :max="3">
-                                <UAvatar src="/images/music/pink.webp" alt="Kanye West" />
-                                <UAvatar src="/images/music/technique.webp" alt="Immortal Technique" />
-                                <UAvatar src="/images/music/linkin.webp" alt="Linkin Park" />
-                                <UAvatar v-for="n in 17" src="" alt="" />
-
-                            </UAvatarGroup>
-                        </div>
-                        
-                        <div class="flex items-center justify-between gap-1">
-                            <!-- <ph-spotify-logo :size="24" weight="fill" />
-                            <p class="text-sm">See on Spotify</p> -->
-                            <Icon name="i-ph-smiley-sticker" class="text-[24px] text-white" />
-                            <p class="text-sm">{{ playlistLength}} songs I like</p>
-                        </div>
-                    </div>
-                </template>
-                    <UTable :rows="playlist" />
-                <!-- <template #footer /> -->
-            </UCard>
-        </section>
-        <!-- ----- -->
+       
     
 
         <UDropdown :items="items" :popper="{ placement: 'bottom-start' }">
