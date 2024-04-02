@@ -35,8 +35,8 @@ onMounted(() => {
 </script>
 
 <template>
-    <div class="w-screen flex flex-col justify-center items-center">
-        <div class="w-screen max-w-7xl md:w-11/12 lg:w-2/4 min-h-screen flex flex-col justify-start">
+    <div class="w-screen max-w-7xl m-auto flex flex-col justify-center items-center">
+        <div class="w-screen md:w-11/12 lg:w-2/4 min-h-screen flex flex-col justify-start">
             <!-- decoration-->
             <div class="w-full h-6 flex flex-row justify-between font-mono">
                 <!--left part-->
@@ -66,7 +66,7 @@ onMounted(() => {
             </div>
 
             <!-- main content -->
-            <div class="flex flex-col justify-start items-start p-6 md:p-8">
+            <div class="flex flex-col justify-start items-start px-4 py-6 md:p-8">
                 <!--intro-->
                 <div class="flex flex-col justify-start items-start">
                     <UAvatar
