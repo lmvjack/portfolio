@@ -1,46 +1,16 @@
 <script setup>
 import { onMounted } from 'vue';
-import { tags } from "~/helpers/tags";
 import { projects } from "~/helpers/projects";
 
-const { metaSymbol } = useShortcuts()
-const value = ref(50)
+function scrollToTop(){
+    window.scrollTo(0, 0);
+}
 
-const items = [
-  [{
-    label: 'profile',
-    avatar: {
-      src: '/images/propic.webp'
-    },
-    shortcuts: ['H'],
-    to: '#profile'
-  }], [{
-    label: 'personal projects',
-    icon: 'i-ph-code',
-    shortcuts: ['E'],
-    to: '#projects',
-  }, {
-    label: 'work experience',
-    icon: 'i-heroicons-document-duplicate-20-solid',
-    shortcuts: ['L'],
-    disabled: true
-  }], [{
-    label: 'more about me',
-    icon: 'i-ph-cat',
-    shortcuts: ['L'],
-    to: '/me'
-  }], [{
-    label: 'contacts',
-    icon: 'i-ph-envelope',
-    shortcuts: ['O'],
-    disabled: true
-  }]
-]
-
-// !!! Clock
+// !!! Time
 const time = ref('');
 
-function zero(num) {  //Function to put leading zeros in numbers
+// Function to put leading zeros in numbers
+function zero(num) {
     if (num < 10) {
         return ("0" + num.toString());
     } else {
@@ -62,113 +32,163 @@ onMounted(() => {
     startTime()
 })
 
-const { data: repos } = await useFetch('https://api.github.com/users/lmvjack/repos?per_page=3')
 </script>
 
-
-
 <template>
-    <main class="w-full flex flex-col justify-center items-center gap-y-5 px-5 md:px-[5%] pb-[5%]">
-        <section id="profile" class="h-full md:h-64 w-full flex flex-col md:flex-row justify-center items-center gap-5 box-content pt-[5vh]">
-            <!-- Profile card -->
-            <UCard class="w-full md:w-3/4 min-h-72 h-auto md:h-full">
-                <template #header > 
-                    <div class="w-full flex flex-row justify-center items-center gap-5">
-                        <UAvatar src="/images/propic.webp" chip-color="orange" chip-text="👋" chip-position="top-right" size="lg" />
-                        <div class="w-full flex flex-col justify-center items-left gap-0.5 ">
-                            <h2 class="text-lg font-semibold">Giacomo</h2>
-                            <p class="text-sm text-gray-500 dark:text-gray-400">🚧 website work in progress 🚧</p>
-                        </div>
+    <div class="w-screen flex flex-col justify-center items-center">
+        <div class="w-screen max-w-7xl md:w-11/12 lg:w-2/4 min-h-screen flex flex-col justify-start">
+            <!-- decoration-->
+            <div class="w-full h-6 flex flex-row justify-between font-mono">
+                <!--left part-->
+                <div class="w-fit h-full flex flex-row">
+                    <div class="w-fit h-full bg-[#BF85E6] text-black flex justify-center items-center px-2">
+                    <UIcon name="i-ph-circuitry-fill" dynamic />
+                    </div>
+                    <div class="w-fit h-full bg-[#0069F8] flex justify-center items-center px-2 gap-2">
+                        <UIcon name="i-ph-folder-open-fill" dynamic />
+                        <p class="text-xs">~/p/index.html</p>
+                    </div>
+                    <div class="w-fit h-full bg-[#C1BE0F] text-black flex justify-center items-center px-2 gap-2 rounded-r-sm">
+                        <UIcon name="i-ph-hand-waving-fill" dynamic />
+                        <p class="text-xs">welcome!</p>
+                    </div>
+                </div>
+
+                <!--right part-->
+                <div class="w-fit h-full flex flex-row">
+                    <div class="w-fit h-full bg-[#BF85E6] text-black flex justify-center items-center px-2 gap-2 rounded-l-sm">
+                        <p class="text-xs">{{ time }}</p>
+                        <UIcon name="i-ph-clock-fill" dynamic />
+                    </div>
+                </div>
+                
+            
+            </div>
+
+            <!-- main content -->
+            <div class="flex flex-col justify-start items-start p-6 md:p-8">
+                <!--intro-->
+                <div class="flex flex-col justify-start items-start">
+                    <UAvatar
+                            chip-color="primary"
+                            chip-text=""
+                            chip-position="top-right"
+                            size="xl"
+                            src="/images/propic.webp"
+                            alt="Avatar"
+                            class="mb-2"
+                        />
+                    <div class="flex flex-row items-end gap-2 mb-2">
+                        <h1 class="text-2xl md:text-4xl font-bold ">
+                            Ciao, I'm Giacomo!
+                        </h1>
                     </div>
                     
-                </template>
-                Tech enthusiast and programmer. 🔋 <br> Currently pursuing a bachelor's in Computer Science at the University of Genoa. 🔌
-                <template #footer >
-                    <div class="flex items-center justify-between">
-                        <!-- <p class="text-sm">
-                            Contact me using 
-                            <span class="text-sm text-gray-500 dark:text-gray-400 underline">
-                                me [at] giacomoquarto.com
-                            </span>
-                        </p> -->
-                        <UDropdown :items="items" :popper="{ placement: 'bottom-start' }">
-                            <UButton color="white" label="Jump to" trailing-icon="i-heroicons-chevron-down-20-solid" />
-                        </UDropdown>
-                        <div class="flex flex-row justify-center items-center gap-2">
-                            <NuxtLink to="https://github.com/lmvjack">
-                                <Icon name="i-ph-github-logo" class="text-[18px] translate-y-[-2px]" color="white" />
-                            </NuxtLink>
-                            <Icon name="i-ph-linkedin-logo" class="text-[18px] text-gray-500 dark:text-gray-400" />
-                        </div>
+                    <p class="text-base font-medium secondary-text mb-2">
+                        Tech enthusiast and programmer. 🔋 Currently pursuing a bachelor's in Computer Science at the University of Genoa. 🔌
+                    </p>
+
+                    <!--contact buttons-->
+                    <div class="flex flex-row flex-wrap gap-2 mb-4">
+                        <MeContactButton title="" icon="i-simple-icons:github" url="https://github.com/lmvjack/" />
+                        <MeContactButton title="" icon="i-simple-icons:linkedin" url="/" />
+                        <MeContactButton title="" icon="i-ph-envelope" url="/" />
                     </div>
 
-                </template>
-            </UCard>
-            <!-- ----- -->
-
-           <!-- Info card -->
-            <UCard class="w-full md:w-1/4 h-64 md:h-full">
-                <div class="w-full flex flex-row justify-between">
-                    <p class="text-sm text-white/80">My local time</p>
-                    <!-- <UDropdown :items="items" :popper="{ placement: 'bottom-start' }">
-                        <UButton color="white" label="Jump to" trailing-icon="i-heroicons-chevron-down-20-solid" />
-                    </UDropdown> -->
-                </div>
-                <p style="font-family: 'Press Start 2P', cursive;">{{ time }}</p>
-                <p class="mt-[5%] text-sm text-white/80">I also enjoy...</p>
-                <div class="h-full flex flex-wrap gap-2 mt-[1%] overflow-scroll">
-                    <MeTag v-for="tag in tags" :title="tag.title" :icon="tag.icon" />
-                </div>
-            </UCard>
-            <!-- ----- -->
-        </section>
-        
-        
-        
-        <!-- Open source personal projects -->
-        <section id="projects">
-            <div class="w-full flex flex-row justify-start mt-6 mb-4">
-                <h1 class="text-3xl text-left font-semibold">Personal projects</h1>
-            </div>
-            <div  class="w-full flex flex-col md:flex-row justify-center items-center gap-5">
-                <UCard v-for="repo in repos" class="w-full md:w-1/3">
-                    <template #header> 
-                        {{repo.name}}
-                    </template>
-
-                    <div class="h-40">
-                        {{repo.description}}
-                    </div>
-                    
-                    <template #footer >
-                        <div class="flex justify-end">
-                            <UButton label="View project" :to="repo.name"  color="orange" variant="ghost"  />
+                    <!--more about me button-->
+                    <NuxtLink to="/me">
+                        <div class="flex flex-col justify-center items-center hover:opacity-75">
+                            <div class="flex flex-row justify-center items-center gap-2">
+                                <p>more about me</p>
+                                <UIcon name="i-ph-cursor-click" dynamic />
+                            </div>
+                            <div class="w-full h-[1px] bg-white rounded-lg"></div>
                         </div>
-                    </template>
-                </UCard>
+                    </NuxtLink>
+                </div>
+
+                <!--separator-->
+                <div class="w-full h-[1px] bg-slate-400 opacity-25 my-8"></div>
+
+                <!--tech stack-->
+                <div class="flex flex-col justify-start items-start">
+                    <h2 class="text-2xl md:text-4xl font-bold mb-2">
+                        Tech stack
+                    </h2>
+                    <p class="text-base font-medium secondary-text mb-4">
+                        Currently learning RISC-V architecture.<br>
+                        I'm constantly exploring new technologies and looking for fun stuff to get my hands on. Here's some:
+                    </p>
+
+                    <!--technologies-->
+                    <div class="w-full flex flex-row flex-wrap">
+                        <MeTechTag title="Python" icon="i-logos:python" />
+                        <MeTechTag title="C" icon="i-logos:c" />
+                        <MeTechTag title="C++" icon="i-logos:c-plusplus" />
+                        <MeTechTag title="Arduino" icon="i-logos:arduino" />
+                        <MeTechTag title="HTML" icon="i-logos:html-5" />
+                        <MeTechTag title="CSS" icon="i-logos:css-3" />
+                        <MeTechTag title="Tailwind" icon="i-devicon:tailwindcss" />
+                        <MeTechTag title="JavaScript" icon="i-logos:javascript" />
+                        <MeTechTag title="Vue" icon="i-logos:vue" />
+                        <MeTechTag title="Nuxt" icon="i-logos:nuxt-icon" />
+                        <MeTechTag title="Svelte" icon="i-logos:svelte-icon" />
+                        <MeTechTag title="Supabase" icon="i-logos:supabase-icon" />
+                        <MeTechTag title="RISC-V assembly" icon="i-simple-icons:riscv" />
+                        
+                    </div>
+                </div>
+
+                <!--separator-->
+                <div class="w-full h-[1px] bg-slate-400 opacity-25 my-8"></div>
+
+                 <!--projects-->
+                 <div class="flex flex-col justify-start items-start">
+                    <h2 class="text-2xl md:text-4xl font-bold gap-2 mb-4">
+                        Projects
+                    </h2>
+
+                    <div class="flex flex-row flex-wrap gap-2">
+                        <MeProjectCard v-for="p in projects" :title="p.name" :description="p.description" :icon="p.icon" :url="p.url" />
+                    </div>
+                </div>
             </div>
-        </section>
 
-        <!-- Works and commissions -->
-        <!-- <div class="w-full flex flex-row justify-start mt-6">
-            <h1 class="text-3xl text-left font-semibold">Works</h1>
-        </div> -->
-        
-       
-    
+            <!-- decoration-->
+            <div class="w-full h-6 bg-[#2A2A2A] flex flex-row justify-between font-mono">
+                <!--left part-->
+                <div class="w-fit h-full flex flex-row">
+                    <div class="w-fit h-full flex justify-center items-center px-2 gap-2">
+                        <UIcon name="i-ph-cat" dynamic />
+                        <p class="text-xs">you've reached the end. bye!</p>
+                    </div>
+                </div>
 
-        <UDropdown :items="items" :popper="{ placement: 'bottom-start' }">
-            <UButton color="white" label="Jump to" trailing-icon="i-heroicons-chevron-down-20-solid" />
-        </UDropdown>
-
-        
-    </main>
+                <!--right part-->
+                <div class="w-fit h-full flex flex-row">
+                    <button @click="scrollToTop">
+                        <div class="w-fit h-full text-white flex justify-center items-center px-2 gap-2 rounded-l-sm cursor-pointer">
+                            <p class="text-xs underline">scroll back</p>
+                            <UIcon name="i-ph-arrow-up" dynamic />
+                        </div>
+                    </button>
+                </div>
+            </div>
+            
+        </div>
+    </div>
 </template>
 
 <style>
-@import url('https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Nunito+Sans:ital,opsz,wght@0,6..12,200..1000;1,6..12,200..1000&display=swap');
 
-html {
-    @apply scroll-smooth;
+html{
+    font-family: "Nunito Sans", sans-serif;
+    background: #111;
+    scroll-behavior: smooth;
 }
-</style> 
+
+.secondary-text{
+    color: #888;
+}
+</style>

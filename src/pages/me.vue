@@ -1,16 +1,17 @@
 <script setup>
-    import { playlist, playlistLength } from "~/helpers/playlist";
+   /*  import { playlist, playlistLength } from "~/helpers/playlist";
 
     // Images
     const images = ref([]);
     for (let n = 1; n < 19; n++) {
         images.value.push(`/images/grid/${n}.webp`)
-    }
+    } */
 </script>
 
 <template>
-    <main class="w-full flex flex-col justify-center items-center gap-y-5 px-5 md:px-[5%] pb-[5%]">
-    <!-- About me -->
+    <p class="text-xl font-semibold text-white">Work in progress 🚧</p>
+    <!-- <main class="w-full flex flex-col justify-center items-center gap-y-5 px-5 md:px-[5%] pb-[5%]">
+    
         <section id="about" class="w-full">
                 <div class="w-full flex flex-row justify-start mt-6 mb-4">
                     <h1 class="text-3xl text-left font-semibold">About me</h1>
@@ -38,7 +39,7 @@
 
             
 
-            <!-- Playlist card -->
+            
             <section id="music" class="w-full">
                 <UCard class="w-full">
                     <template #header >
@@ -55,17 +56,15 @@
                             </div>
                             
                             <div class="flex items-center justify-between gap-1">
-                                <!-- <ph-spotify-logo :size="24" weight="fill" />
-                                <p class="text-sm">See on Spotify</p> -->
                                 <Icon name="i-ph-smiley-sticker" class="text-[24px] text-white" />
                                 <p class="text-sm">{{ playlistLength}} songs I like</p>
                             </div>
                         </div>
                     </template>
                         <UTable :rows="playlist" />
-                    <!-- <template #footer /> -->
+                    
                 </UCard>
             </section>
-            <!-- ----- -->
-    </main>
+            
+    </main> -->
 </template>
