@@ -4,10 +4,14 @@ export default defineNuxtConfig({
   devtools: { enabled: true },
   srcDir: "src",
   modules: ['@nuxt/ui', 'nuxt-icon'],
+
   colorMode: {
     preference: 'dark'
   },
+
   ui: {
     icons: ["ph"],
   },
+
+  compatibilityDate: '2024-09-26',
 })

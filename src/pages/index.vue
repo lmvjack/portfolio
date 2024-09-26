@@ -82,6 +82,9 @@ onMounted(() => {
                         <h1 class="text-2xl md:text-4xl font-bold ">
                             Ciao, I'm Giacomo!
                         </h1>
+                        <span>
+                                <img src="https://img.pokemondb.net/sprites/black-white/anim/normal/celebi.gif" alt="Celebi">
+                        </span>
                     </div>
                     
                     <p class="text-base font-medium secondary-text mb-2">
