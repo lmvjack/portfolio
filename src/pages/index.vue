@@ -118,28 +118,54 @@ onMounted(() => {
                     <h2 class="text-2xl md:text-4xl font-bold mb-2">
                         Tech stack
                     </h2>
+                    <p class="text-base font-medium secondary-text mb-6">
+                        I'm constantly exploring new technologies and looking for fun stuff to get my hands on.
+                    </p>
+                    
+                    <h3 class="text-xl md:text-2xl font-semibold mb-2">
+                        Main stack
+                    </h3>
                     <p class="text-base font-medium secondary-text mb-4">
-                        Currently learning RISC-V architecture.<br>
-                        I'm constantly exploring new technologies and looking for fun stuff to get my hands on. Here's some:
+                        The languages I'm more interested in.
                     </p>
 
                     <!--technologies-->
-                    <div class="w-full flex flex-row flex-wrap">
+                    <div class="w-full flex flex-row flex-wrap mb-4">
                         <MeTechTag title="Python" icon="i-logos:python" />
                         <MeTechTag title="C" icon="i-logos:c" />
                         <MeTechTag title="C++" icon="i-logos:c-plusplus" />
-                        <MeTechTag title="Arduino" icon="i-logos:arduino" />
+                        <MeTechTag title="JavaScript" icon="i-logos:javascript" />
+                    </div>
+
+                    <h3 class="text-xl md:text-2xl font-semibold mb-2">
+                        Web stack
+                    </h3>
+                    <p class="text-base font-medium secondary-text mb-4">
+                        Even if it's not my current focus, my programming journey started mainly with web development.
+                    </p>
+                    <div class="w-full flex flex-row flex-wrap mb-4">
                         <MeTechTag title="HTML" icon="i-logos:html-5" />
                         <MeTechTag title="CSS" icon="i-logos:css-3" />
                         <MeTechTag title="Tailwind" icon="i-devicon:tailwindcss" />
-                        <MeTechTag title="JavaScript" icon="i-logos:javascript" />
                         <MeTechTag title="Vue" icon="i-logos:vue" />
                         <MeTechTag title="Nuxt" icon="i-logos:nuxt-icon" />
-                        <MeTechTag title="Svelte" icon="i-logos:svelte-icon" />
                         <MeTechTag title="Supabase" icon="i-logos:supabase-icon" />
-                        <MeTechTag title="RISC-V assembly" icon="i-simple-icons:riscv" />
-                        
                     </div>
+
+                    <h3 class="text-xl md:text-2xl font-semibold mb-2">
+                        Other technologies
+                    </h3>
+                    <p class="text-base font-medium secondary-text mb-4">
+                        Languages or technologies I've used in university or I've started learning on my own.
+                    </p>
+                    <div class="w-full flex flex-row flex-wrap mb-4">
+                        <MeTechTag title="F#" icon="i-logos:fsharp" />
+                        <MeTechTag title="Java" icon="i-logos:java" />
+                        <MeTechTag title="Arduino" icon="i-logos:arduino" />
+                        <MeTechTag title="Swift" icon="i-logos:swift" />
+                        <MeTechTag title="Svelte" icon="i-logos:svelte-icon" />
+                        <MeTechTag title="RISC-V assembly" icon="i-simple-icons:riscv" />
+                    </div>   
                 </div>
 
                 <!--separator-->
