@@ -126,7 +126,7 @@ onMounted(() => {
                         Main stack
                     </h3>
                     <p class="text-base font-medium secondary-text mb-4">
-                        The languages I'm more interested in.
+                        The languages I'm most interested in.
                     </p>
 
                     <!--technologies-->
